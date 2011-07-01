@@ -1,2 +1,2 @@
 decode protobuf to json format
-It depends on jansson to pack json
+It depends on jansson(https://github.com/akheron/jansson) to pack json

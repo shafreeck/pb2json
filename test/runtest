@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ ! -x "test_person" ]
+then
+	echo "Object doesn't exist,please run make first"
+	exit 1
+fi
+if [ ! -x "test_json" ]
+then
+	echo "Object doesn't exist,please run make first"
+	exit 1
+fi
+
+echo "########set protobuf#######"
+./test_person
+echo 
+echo "********parse to json*******"
+./test_json

@@ -1,7 +1,7 @@
 #include "pb2json.h"
 
 using std::string;
-char * pb2json(Message *msg,const char *buf ,const int len)
+char * pb2json( Message *msg,const char *buf ,int len)
 {
 	string s (buf,len);
 	msg->ParseFromString(s);
@@ -14,6 +14,7 @@ static json_t *parse_repeated_field(const Message *msg,const Reflection * ref,co
 {
 	size_t count = ref->FieldSize(*msg,field);
 	json_t *arr = json_array();	
+	if(!arr)return NULL;
 	switch(field->cpp_type())	
 	{
 		case FieldDescriptor::CPPTYPE_DOUBLE:

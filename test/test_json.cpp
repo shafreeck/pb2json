@@ -1,7 +1,8 @@
 #include <fstream>
 #include <iostream>
 #include "person.pb.h"
-#include "../pb2json.h"
+//#include "../pb2json.h"
+#include <pb2json.h>
 
 using namespace std;
 

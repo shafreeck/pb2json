@@ -5,3 +5,4 @@
 using namespace google::protobuf;
 char *pb2json( Message *msg,const char *buf,const int len);
 static json_t *parse_msg(const Message *msg);
+static json_t *parse_repeated_field(const Message *msg,const Reflection * ref,const FieldDescriptor *field);

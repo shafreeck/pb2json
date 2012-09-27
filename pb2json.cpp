@@ -1,7 +1,7 @@
 #include "pb2json.h"
 
 using std::string;
-char * pb2json(const Message &msg,const char *buf ,int len)
+char * pb2json(const Message &msg)
 {
 	json_t *root = parse_msg(&msg);
 	char *json = json_dumps(root,0);

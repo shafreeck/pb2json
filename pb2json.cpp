@@ -1,6 +1,28 @@
 #include "pb2json.h"
 
 using std::string;
+string hex_encode(const string& input)
+{
+	static const char* const lut = "0123456789abcdef";
+	size_t len = input.length();
+
+	std::string output;
+	output.reserve(2 * len);
+	for (size_t i = 0; i < len; ++i)
+	{
+		const unsigned char c = input[i];
+		output.push_back(lut[c >> 4]);
+		output.push_back(lut[c & 15]);
+	}
+	return output;
+}
+char * pb2json(const Message &msg)
+{
+	json_t *root = parse_msg(&msg);
+	char *json = json_dumps(root,0);
+	json_decref(root);
+	return json; // should be freed by caller
+}
 char * pb2json( Message *msg,const char *buf ,int len)
 {
 	GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -153,11 +175,14 @@ static json_t *parse_msg(const Message *msg)
 					break;
 				case FieldDescriptor::CPPTYPE_BOOL:
 					value7 = ref->GetBool(*msg,field);
-
 					json_object_set_new(root,name,value7?json_true():json_false())	;
 					break;
 				case FieldDescriptor::CPPTYPE_STRING:
-					value8 = ref->GetString(*msg,field);
+					if (field->type() == FieldDescriptor::TYPE_BYTES) {
+						value8 = hex_encode(ref->GetString(*msg,field));
+					} else {
+						value8 = ref->GetString(*msg,field);
+					}
 					json_object_set_new(root,name,json_string(value8.c_str()));	
 					break;
 				case FieldDescriptor::CPPTYPE_MESSAGE:

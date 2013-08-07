@@ -3,7 +3,7 @@
 decode protobuf to json format
 It depends on jansson(https://github.com/akheron/jansson) to pack json
 
-Support all type of protobuf Message (example: see test/person.proto)
+**Support all type of protobuf Message (example: see test/person.proto) except binary bytes(json is text not binary)**
 
 2. Install
 
@@ -12,7 +12,7 @@ This library depends on jansson(http://www.digip.org/jansson/)
 * We assumed you have installed protobuf
 
 1) install jansson
- wget "http://www.digip.org/jansson/releases/jansson-2.1.tar.gz"
+ wget "http://www.digip.org/jansson/releases/jansson-2.1.tar.gz "
  tar -zxvf jansson-2.1.tar.gz
  cd jansson-2.1
  ./configure

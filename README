@@ -3,7 +3,7 @@
 decode protobuf to json format
 It depends on jansson(https://github.com/akheron/jansson) to pack json
 
-Support all type of protobuf Message (example: see test/person.proto) except binary bytes(json is text not binary)
+**Support all type of protobuf Message (example: see test/person.proto) except binary bytes(json is text not binary)**
 
 2. Install
 

@@ -3,11 +3,13 @@
 using std::string;
 char * pb2json( Message *msg,const char *buf ,int len)
 {
+	GOOGLE_PROTOBUF_VERIFY_VERSION;
 	string s (buf,len);
 	msg->ParseFromString(s);
 	json_t *root = parse_msg(msg);
 	char *json = json_dumps(root,0);
 	json_decref(root);
+	google::protobuf::ShutdownProtobufLibrary();
 	return json; // should be freed by caller
 }
 static json_t *parse_repeated_field(const Message *msg,const Reflection * ref,const FieldDescriptor *field)

@@ -1,32 +1,32 @@
 1. Introducton:
 
-decode protobuf to json format
-It depends on jansson(https://github.com/akheron/jansson) to pack json
+  decode protobuf to json format  
+  It depends on jansson(https://github.com/akheron/jansson) to pack json
 
-**Support all type of protobuf Message (example: see test/person.proto) except binary bytes(json is text not binary)**
+  **Support all type of protobuf Message (example: see test/person.proto) except binary bytes(json is text not binary)**
 
 2. Install
 
-This library depends on jansson(http://www.digip.org/jansson/)
+  This library depends on jansson(http://www.digip.org/jansson/)
 
-* We assumed you have installed protobuf
+  **We assumed you have installed protobuf**
 
-1) install jansson
- wget "http://www.digip.org/jansson/releases/jansson-2.1.tar.gz "
- tar -zxvf jansson-2.1.tar.gz
- cd jansson-2.1
- ./configure
- make
- sudo make install
+  1) install jansson
+   wget "http://www.digip.org/jansson/releases/jansson-2.1.tar.gz "
+   tar -zxvf jansson-2.1.tar.gz
+   cd jansson-2.1
+   ./configure
+   make
+   sudo make install
 
- 2)install pb2json (is simple)
- make 
- sudo make install
+  2)install pb2json (is simple)
+   make 
+   sudo make install
 
 3. Test & example
- cd $src/test
- run make to generate object files
- ./runtest to see the result 
+  cd $src/test
+  run make to generate object files
+  ./runtest to see the result 
 
 4. Usage
  You can refer to $src/test/test_json.cpp

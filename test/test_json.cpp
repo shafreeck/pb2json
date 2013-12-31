@@ -16,7 +16,7 @@ int main(int argc,char *argv[])
 	char *buf = new char [len];
 
 	fin.read(buf,len);
-	Message *p = new Person();
+	google::protobuf::Message *p = new Person();
 	char *json = pb2json(p,buf,len);
 	cout<<json<<endl;
 	free(json);

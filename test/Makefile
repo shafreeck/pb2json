@@ -3,7 +3,7 @@ person.pb.cc:person.proto
 	protoc --cpp_out=./ person.proto
 test_person:test_person.cpp person.pb.cc person.pb.h
 	g++ -g -o test_person test_person.cpp person.pb.cc -lprotobuf -lpthread
-test_json:test_json.cpp person.pb.cc person.pb.h 
+test_json:test_json.cpp person.pb.cc person.pb.h ../libpb2json.a
 	g++ -g -o test_json test_json.cpp person.pb.cc ../libpb2json.a  -I../  -lprotobuf -ljansson -lpthread
 
 clean:

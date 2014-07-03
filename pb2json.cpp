@@ -18,6 +18,7 @@ std::string hex_encode(const std::string& input)
 }
 char * pb2json(const google::protobuf::Message &msg)
 {
+	GOOGLE_PROTOBUF_VERIFY_VERSION;
 	json_t *root = parse_msg(&msg);
 	char *json = json_dumps(root,0);
 	json_decref(root);
@@ -31,7 +32,6 @@ char * pb2json( google::protobuf::Message *msg,const char *buf ,int len)
 	json_t *root = parse_msg(msg);
 	char *json = json_dumps(root,0);
 	json_decref(root);
-	google::protobuf::ShutdownProtobufLibrary();
 	return json; // should be freed by caller
 }
 static json_t *parse_repeated_field(const google::protobuf::Message *msg,const google::protobuf::Reflection * ref,const google::protobuf::FieldDescriptor *field)

@@ -24,6 +24,12 @@ int main(int argc,char *argv[])
 
 	// Test 2: convert PB to JSON directly
 	Person p2;
+    p2.set_name("Shafreeck Sea");
+    p2.set_id(2);
+    p2.set_email("renenglish@gmail.com");
+	Person_PhoneNumber *pn1 = p2.add_phone();
+	pn1->set_number("1234567");
+	pn1->set_type(Person::HOME);
 	char *json2 = pb2json(p2);
 	cout<<json2<<endl;
 	free(json2);

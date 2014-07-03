@@ -1,6 +1,6 @@
 all:libpb2json.so libpb2json.a
 libpb2json.so:pb2json.cpp pb2json.h
-	 gcc -g -O3 -shared -Wall -fPIC -o libpb2json.so pb2json.cpp -lprotobuf -ljansson
+	 g++ -g -O3 -shared -Wall -fPIC -o libpb2json.so pb2json.cpp -lprotobuf -ljansson
 libpb2json.a:pb2json.o
 	 ar cr libpb2json.a pb2json.o
 	 cd test && make -f Makefile

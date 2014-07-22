@@ -6,5 +6,5 @@ install:
     - sudo apt-get install -y protobuf-compiler
     - sudo apt-get install -y libprotobuf-dev
 script:
-    - make && cd test && test/runtest && cd -
+    - make && cd test && ./runtest && cd -
 

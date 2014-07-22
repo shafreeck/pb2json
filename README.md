@@ -1,5 +1,7 @@
 # 1. Introducton:
   Decode protobuf to json format
+
+[![Build Status](https://travis-ci.org/renenglish/pb2json.svg?branch=master)](https://travis-ci.org/renenglish/pb2json)
   
   It depends on jansson(https://github.com/akheron/jansson) to pack json
   

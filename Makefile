@@ -10,7 +10,6 @@ clean:
 	rm -f *.o *.so *.a test_pb2json
 	cd test && make clean
 install:
-	cp -vf libpb2json.so /usr/local/lib/
-	cp -vf libpb2json.a /usr/local/lib/
-	cp -vf pb2json.h /usr/local/include/
-	ldconfig
+	install libpb2json.so /usr/local/lib/
+	install libpb2json.a /usr/local/lib/
+	cp -vf  pb2json.h /usr/local/include/

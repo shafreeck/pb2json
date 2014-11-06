@@ -185,7 +185,8 @@ static json_t *parse_msg(const Message *msg)
 					break;
 				case FieldDescriptor::CPPTYPE_MESSAGE:
 					value9 = &(ref->GetMessage(*msg,field));
-					json_object_set_new(root,name,parse_msg(value9));
+					if (value9)
+						json_object_set_new(root,name,parse_msg(value9));
 					break;//FIXME : parse Message
 				case FieldDescriptor::CPPTYPE_ENUM:
 					value10 = ref->GetEnum(*msg,field);

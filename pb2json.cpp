@@ -131,8 +131,11 @@ static json_t *parse_msg(const google::protobuf::Message *msg)
 		const google::protobuf::Reflection *ref = msg->GetReflection();
 		if(!ref)return NULL;
 		const char *name = field->name().c_str();
-		if(field->is_repeated())
-			json_object_set_new(root,name,parse_repeated_field(msg,ref,field));
+		if(field->is_repeated()) {
+            if (ref->FieldSize(*msg, field) > 0) {
+                json_object_set_new(root,name,parse_repeated_field(msg,ref,field));
+            }
+        }
 		if(!field->is_repeated() && ref->HasField(*msg,field))
 		{
 

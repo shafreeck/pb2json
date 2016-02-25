@@ -1,0 +1,10 @@
+language: cpp
+before_install:
+    - sudo apt-get update -qq
+install:
+    - sudo apt-get install -y libjansson-dev
+    - sudo apt-get install -y protobuf-compiler
+    - sudo apt-get install -y libprotobuf-dev
+script:
+    - make && cd test && ./runtest && cd -
+

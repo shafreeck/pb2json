@@ -34,7 +34,7 @@ char * pb2json( google::protobuf::Message *msg,const char *buf ,int len)
 	json_decref(root);
 	return json; // should be freed by caller
 }
-static json_t *parse_repeated_field(const google::protobuf::Message *msg,const google::protobuf::Reflection * ref,const google::protobuf::FieldDescriptor *field)
+json_t *parse_repeated_field(const google::protobuf::Message *msg,const google::protobuf::Reflection * ref,const google::protobuf::FieldDescriptor *field)
 {
 	size_t count = ref->FieldSize(*msg,field);
 	json_t *arr = json_array();	
@@ -116,7 +116,7 @@ static json_t *parse_repeated_field(const google::protobuf::Message *msg,const g
 	}
 	return arr;
 }
-static json_t *parse_msg(const google::protobuf::Message *msg)
+json_t *parse_msg(const google::protobuf::Message *msg)
 {
 	const google::protobuf::Descriptor *d = msg->GetDescriptor();
 	if(!d)return NULL;

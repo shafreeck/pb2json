@@ -16,11 +16,16 @@ std::string hex_encode(const std::string& input)
 	}
 	return output;
 }
-char * pb2json(const google::protobuf::Message &msg)
+char * pb2json(const google::protobuf::Message &msg, bool pretty)
 {
 	GOOGLE_PROTOBUF_VERIFY_VERSION;
 	json_t *root = parse_msg(&msg);
-	char *json = json_dumps(root,0);
+	char *json = NULL;
+        if (pretty == true) {
+	  json = json_dumps(root,JSON_INDENT(2) | JSON_COMPACT);
+        } else {
+          json = json_dumps(root, 0); 
+        }
 	json_decref(root);
 	return json; // should be freed by caller
 }
